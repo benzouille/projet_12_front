@@ -1,0 +1,21 @@
+a{
+  text-decoration: none;
+  color: white;
+}
+
+a:hover, a:active{
+  color: lightgray;
+}
+
+.nav-caption{
+  display: inline-block;
+  padding-left: 6px;
+}
+
+.mat-divider {
+  display: block;
+  margin-left: 10px;
+  margin-right: 10px;
+  border-top-width: 2px;
+  border-top-style: solid;
+}

@@ -1,0 +1,68 @@
+<mat-card class="news-form-panel data-form mat-elevation-z10" style="margin-bottom: 20px; margin-top: 20px">
+
+  <h2 class="title">Nouvelle actualité</h2>
+
+  <mat-horizontal-stepper>
+
+    <mat-step state="config" [stepControl]="step1.form" errorMessage="Une erreur est présente dans la configuration">
+
+      <ng-template matStepLabel>configuration</ng-template>
+
+      <app-news-form-step1 #step1></app-news-form-step1>
+
+      <div class="stepper-buttons">
+
+        <button mat-raised-button color="primary" matStepperNext>Vers étape 2</button>
+
+      </div>
+
+    </mat-step>
+
+    <mat-step state="info" [stepControl]="step2.form" errorMessage="Une erreur est présente dans le sujet">
+
+      <ng-template matStepLabel>sujet</ng-template>
+
+      <app-news-form-step2 #step2></app-news-form-step2>
+
+      <div class="stepper-buttons">
+
+        <button mat-raised-button matStepperPrevious>Back</button>
+
+        <button mat-raised-button color="primary" matStepperNext>Vers étape 3</button>
+
+      </div>
+
+    </mat-step>
+
+    <mat-step state="verify" [stepControl]="step3.form" errorMessage="Une erreur est présente dans le formulaire">
+
+      <ng-template matStepLabel>aperçu</ng-template>
+
+      <app-news-form-step3 #step3></app-news-form-step3>
+
+      <div class="stepper-buttons">
+
+        <button mat-raised-button matStepperPrevious>Back</button>
+
+        <button mat-raised-button color="primary"
+                [disabled]="!step3.form.valid"
+                (click)="submit(step1.form.value, step2.form.value)">Créer</button>
+
+      </div>
+
+    </mat-step>
+
+  </mat-horizontal-stepper>
+
+
+  <ng-template matStepperIcon="config">
+    <mat-icon>settings_applications</mat-icon>
+  </ng-template>
+  <ng-template matStepperIcon="info">
+    <mat-icon>subject</mat-icon>
+  </ng-template>
+  <ng-template matStepperIcon="verify">
+    <mat-icon>fact_check</mat-icon>
+  </ng-template>
+</mat-card>
+

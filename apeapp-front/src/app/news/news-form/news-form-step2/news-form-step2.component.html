@@ -1,0 +1,58 @@
+<div [formGroup]="form" fxFlex fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+
+  <div fxLayout="column" fxLayoutGap="10px"
+       fxFlex="33"
+       fxFlex.md="33"
+       fxFlex.sm="100"
+       fxFlex.xs="100">
+
+    <div class="div-padding" fxLayout="column">
+
+      <mat-form-field>
+
+        <input matInput placeholder="Titre" formControlName="title" #titl>
+
+        <mat-hint align="end">
+          {{titl.value.length}} / 60
+        </mat-hint>
+
+        <mat-error *ngIf="title.errors?.required">Le titre est obligatoire</mat-error>
+
+      </mat-form-field>
+
+    </div>
+
+    <div class="div-padding" fxLayout="column">
+
+      <app-upload-file formControlName="thumbnail"></app-upload-file>
+
+    </div>
+  </div>
+
+  <div  class="div-padding" fxFlex fxLayout="column">
+
+    <mat-form-field appearance="outline">
+
+    <textarea matInput placeholder="description" formControlName="longDescription" #descr>
+
+    </textarea>
+
+      <mat-hint align="end">
+        {{descr.value.length}} / 1000
+      </mat-hint>
+
+      <mat-error *ngIf="description.errors?.required">La description est obligatoire</mat-error>
+
+    </mat-form-field>
+
+  </div>
+</div>
+<div fxFlex fxLayout="column">
+  <div class="form-val">
+    Form validity state: {{form.valid }}
+  </div>
+  <div class="form-val">
+    {{form.value | json}}
+  </div>
+</div>
+

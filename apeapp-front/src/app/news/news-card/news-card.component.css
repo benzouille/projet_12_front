@@ -1,0 +1,19 @@
+
+.new-card {
+  margin: 20px 10px;
+  background-size: cover;
+  position: relative;
+  background: url("src/assets/img/background_card.png");
+  background-size: cover;
+  background-origin: border-box;
+
+}
+
+.new-card-title{
+  text-align: center;
+  height: 50px
+}
+
+.new-actions {
+  text-align: center;
+}

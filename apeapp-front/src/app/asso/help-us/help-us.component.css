@@ -1,0 +1,20 @@
+
+.img-title{
+  margin: 40px 0;
+}
+
+.img-resizable{
+  max-width: 501px;
+  width: 90%;
+  height: 90%;
+}
+
+.spaceLnR{
+  margin: 40px 40px
+}
+
+h2{
+  letter-spacing:2px;
+  margin-top: 20px;
+  margin-left: -10px;
+}

@@ -1,0 +1,78 @@
+<div [formGroup]="form" fxFlex fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+
+  <div fxLayout="column" fxLayoutGap="10px"
+       fxFlex="33"
+       fxFlex.md="33"
+       fxFlex.sm="100"
+       fxFlex.xs="100">
+
+    <div class="mat-elevation-z1" fxLayout="column"
+         style="padding: 0 40px 0 20px">
+
+      <h4>Catégorie</h4>
+
+      <mat-form-field>
+
+        <mat-select placeholder="Selectionner une catégorie" formControlName="category">
+
+          <ng-container *ngFor="let category of (newsCategories)">
+
+            <mat-option [value]="category.code">{{category.description}}</mat-option>
+
+          </ng-container>
+
+        </mat-select>
+
+        <mat-error *ngIf="category.errors?.required">La séléction d'une catégorie est obligatoire</mat-error>
+
+      </mat-form-field>
+
+    </div>
+    <div class="mat-elevation-z1" fxFlex fxLayout="column" style="padding: 0 40px 0 20px">
+      <h4>Média</h4>
+      <mat-checkbox color="primary" formControlName="onSite">
+        Site
+      </mat-checkbox>
+      <mat-checkbox color="primary" formControlName="onMail">
+        E-mail
+      </mat-checkbox>
+
+      <mat-checkbox color="primary" disabled="true" formControlName="onFacebook">
+        Facebook <mat-hint style="align-content: center; font-size: 8px"><mat-icon style="font-size: 15px">construction</mat-icon> en développement</mat-hint>
+      </mat-checkbox>
+
+    </div>
+  </div>
+
+  <div class="mat-elevation-z1" fxFlex fxLayout="column" style="padding: 0 40px 0 20px">
+
+    <h4>Date de l'évenement</h4>
+
+    <mat-checkbox color="primary" formControlName="onDateEvent" style="padding-top: 10px">
+
+      Date de l'évenement
+
+    </mat-checkbox>
+
+    <mat-form-field>
+
+      <input matInput [matDatepicker]="eventDatePicker"
+             formControlName="eventAt" placeholder="date" [disabled]="!form.value.onDateEvent">
+
+      <mat-datepicker-toggle matSuffix
+                             [for]="eventDatePicker"></mat-datepicker-toggle>
+
+      <mat-datepicker #eventDatePicker></mat-datepicker>
+
+    </mat-form-field>
+
+  </div>
+
+</div>
+
+<!--<div class="form-val">-->
+
+<!--  {{form.value |json}}-->
+
+<!--</div>-->
+

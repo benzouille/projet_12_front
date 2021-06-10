@@ -1,0 +1,70 @@
+<div>
+  <div class="div-background-logo" fxLayoutAlign="center center">
+    <img fxHide.xs class="img-background-logo" src="{{imgpathBackgroundLogo}}">
+  </div>
+  <div class="div-logo" fxLayoutAlign="center center">
+    <img class="img-logo" src="{{imgpathLogo}}">
+  </div>
+  <!--  <div class="div-slog" fxLayoutAlign="center center">-->
+  <!--    <img class="img-slog" src="{{imgpathSlog}}">-->
+  <!--  </div>-->
+  <div class="spaceLnR" fxLayout="column" fxLayoutAlign="space-around center">
+    <div>
+      <h2><strong>{{h1}}</strong></h2>
+      <p>{{presentation}}</p>
+    </div>
+    <div class="img-title" fxLayoutAlign="center center">
+      <img class="img-resizable" src="{{imgpathSubtitle}}" alt="{{imgAltSubtitle}}">
+    </div>
+    <app-news-main-page></app-news-main-page>
+
+    <div>
+      <button mat-raised-button color="primary" routerLink="/news">
+        <mat-icon class="clickable">article</mat-icon>
+        <span class="nav-caption">  Voir toutes les actualités</span>
+      </button>
+    </div>
+
+    <div [formGroup]="form" fxFlex fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap="10px">
+      <span class="nav-caption">S'inscrire à la newsletter</span>
+      <div>
+        <div>
+          <mat-form-field>
+
+            <input matInput placeholder="Email" formControlName="email" #email>
+
+            <mat-error *ngIf="!email.validity">Doit être une adresse email valide</mat-error>
+
+          </mat-form-field>
+
+        </div>
+      </div>
+
+      <div>
+        <button mat-raised-button color="primary"
+                [disabled]="!form.valid"
+                (click)="submit(form)">S'inscrire</button>
+      </div>
+    </div>
+
+    <div>
+      <div>
+        <button mat-button routerLink="/news">
+          <mat-icon class="clickable">card_membership</mat-icon>
+          <span class="nav-caption">Adhérer</span>
+        </button>
+      </div>
+
+      <div>
+        <button mat-button routerLink="/asso/help-us">
+          <mat-icon class="clickable">hail</mat-icon>
+          <span class="nav-caption">Nous aider</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

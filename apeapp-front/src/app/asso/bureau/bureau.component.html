@@ -1,0 +1,60 @@
+<div fxLayout="column">
+  <div class="img-title" fxLayoutAlign="center center">
+    <img class="img-resizable" src="{{imgpath}}">
+  </div>
+
+  <div fxLayout="column" fxLayoutAlign="space-around">
+    <div fxLayoutAlign="space-around" fxFlex="50%" fxFlex.xs>
+      <p>
+        {{paraph0}}
+      </p>
+    </div>
+    <div fxFlex="60%" fxFlex.xs>
+      <div fxFlex="50%" fxHide.sm fxHide.xs></div>
+      <div>
+        <h2>{{subtitle1}}</h2>
+        <ul>
+
+          <li *ngFor="let officer of office ">
+            {{officer.title}} : {{officer.name}}
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <!--  ----------------------NORMAL-SCREEN----------------------  -->
+  <div fxHide.lt-lg fxLayoutAlign="space-around center" style="margin-bottom: 20px">
+    <img
+      src="assets/img/asso/office/office_ape.png">
+  </div>
+  <!--  ----------------------MINI-SCREEN----------------------  -->
+
+  <div fxFlex fxLayout="column" fxLayoutGap="10px">
+    <div fxLayout="row wrap">
+      <!--List of card-->
+      <div
+        *ngFor="let officer of office"
+        fxHide.xl
+        fxHide.lg
+        fxFlex="20"
+        fxFlex.md="25"
+        fxFlex.sm="33"
+        fxFlex.xs="50"
+        fxLayout="column"
+        style="padding: 5px;"
+      >
+        <mat-card class="new-card mat-elevation-z5 text-center">
+          <!--  <img mat-card-image [src]="new.path">-->
+          <img mat-card-image src="{{officer.imgPath}}">
+
+        </mat-card>
+      </div>
+      <!--List of card-->
+    </div>
+  </div>
+</div>
+

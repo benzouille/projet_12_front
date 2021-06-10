@@ -1,0 +1,183 @@
+<div class="news-panel" fxFlex="90">
+
+  <div class="img-title" fxLayoutAlign="center center">
+    <img class="img-resizable" src="{{imgpath}}">
+  </div>
+
+  <mat-tab-group>
+
+    <mat-tab label="Toutes">
+
+      <div fxFlex fxLayout="column" fxLayoutGap="10px">
+        <div fxLayout="row wrap">
+          <!--List of card-->
+          <div class="min-padding"
+            *ngFor="let comm of allComs$ | async"
+            fxFlex="25"
+            fxFlex.md="33"
+            fxFlex.sm="50"
+            fxFlex.xs="100"
+            fxLayout="column">
+            <mat-card class="new-card mat-elevation-z10 text-center" >
+
+              <mat-card-header>
+
+                <mat-card-title class="new-card-title">{{comm.title}}</mat-card-title>
+
+              </mat-card-header>
+
+              <img class="new-card-img" mat-card-image src="http://localhost:9101/image/{{comm.imagePath}}">
+
+              <mat-card-content>
+                <p>{{comm.body | slice : 0 : 60 }}...</p>
+              </mat-card-content>
+
+              <mat-card-actions class="new-actions">
+                <!--TODO tester fxFlexsur button-->
+                <button  mat-button class="mat-raised-button" color="primary" routerLink="communication/{{comm.id}}">
+                  Lire
+                </button>
+
+              </mat-card-actions>
+
+            </mat-card>
+          </div>
+          <!--List of card-->
+        </div>
+      </div>
+
+    </mat-tab>
+
+    <mat-tab label="Manifestations">
+
+      <div fxFlex fxLayout="column" fxLayoutGap="10px">
+        <div fxLayout="row wrap">
+          <!--List of card-->
+          <div class="min-padding"
+               *ngFor="let comm of manifComs$ | async"
+               fxFlex="25"
+               fxFlex.md="33"
+               fxFlex.sm="50"
+               fxFlex.xs="100"
+               fxLayout="column">
+            <mat-card class="new-card mat-elevation-z10 text-center" >
+
+              <mat-card-header>
+
+                <mat-card-title class="new-card-title">{{comm.title}}</mat-card-title>
+
+              </mat-card-header>
+
+              <img class="new-card-img" mat-card-image src="http://localhost:9101/image/{{comm.imagePath}}">
+
+              <mat-card-content>
+                <p>{{comm.body | slice : 0 : 60 }}...</p>
+              </mat-card-content>
+
+              <mat-card-actions class="new-actions">
+                <!--TODO tester fxFlexsur button-->
+                <button  mat-button class="mat-raised-button" routerLink="communication/{{comm.id}}">
+                  Lire
+                </button>
+
+              </mat-card-actions>
+
+            </mat-card>
+          </div>
+          <!--List of card-->
+        </div>
+      </div>
+
+    </mat-tab>
+
+    <mat-tab label="Actualités">
+
+      <div fxFlex fxLayout="column" fxLayoutGap="10px">
+        <div fxLayout="row wrap">
+          <!--List of card-->
+          <div class="min-padding"
+               *ngFor="let comm of actuComs$ | async"
+               fxFlex="25"
+               fxFlex.md="33"
+               fxFlex.sm="50"
+               fxFlex.xs="100"
+               fxLayout="column">
+            <mat-card class="new-card mat-elevation-z10 text-center" >
+
+              <mat-card-header>
+
+                <mat-card-title class="new-card-title">{{comm.title}}</mat-card-title>
+
+              </mat-card-header>
+
+              <img class="new-card-img" mat-card-image src="http://localhost:9101/image/{{comm.imagePath}}">
+
+              <mat-card-content>
+                <p>{{comm.body | slice : 0 : 60 }}...</p>
+              </mat-card-content>
+
+              <mat-card-actions class="new-actions">
+                <!--TODO tester fxFlexsur button-->
+                <button  mat-button class="mat-raised-button" routerLink="communication/{{comm.id}}">
+                  Lire
+                </button>
+
+              </mat-card-actions>
+
+            </mat-card>
+          </div>
+          <!--List of card-->
+        </div>
+      </div>
+
+    </mat-tab>
+
+    <mat-tab label="Informations">
+
+      <div fxFlex fxLayout="column" fxLayoutGap="10px">
+        <div fxLayout="row wrap">
+          <!--List of card-->
+          <div class="min-padding"
+               *ngFor="let comm of actuComs$ | async"
+               fxFlex="25"
+               fxFlex.md="33"
+               fxFlex.sm="50"
+               fxFlex.xs="100"
+               fxLayout="column">
+            <mat-card class="new-card mat-elevation-z10 text-center" >
+
+              <mat-card-header>
+
+                <mat-card-title class="new-card-title">{{comm.title}}</mat-card-title>
+
+              </mat-card-header>
+
+              <img class="new-card-img" mat-card-image src="http://localhost:9101/image/{{comm.imagePath}}">
+
+              <mat-card-content>
+                <p>{{comm.body | slice : 0 : 60 }}...</p>
+              </mat-card-content>
+
+              <mat-card-actions class="new-actions">
+                <!--TODO tester fxFlexsur button-->
+                <button  mat-button class="mat-raised-button" routerLink="communication/{{comm.id}}">
+                  Lire
+                </button>
+
+              </mat-card-actions>
+
+            </mat-card>
+          </div>
+          <!--List of card-->
+        </div>
+      </div>
+
+    </mat-tab>
+
+  </mat-tab-group>
+
+
+</div>
+
+
+

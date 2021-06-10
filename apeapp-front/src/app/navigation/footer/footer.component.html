@@ -1,0 +1,79 @@
+<footer>
+  <!--  ----------------------IMG-ECOLE----------------------  -->
+  <div fxLayoutAlign="center center" class="img-ecole">
+
+    <img class="img-resizable" src="{{ecoleImgPath}}">
+
+  </div>
+  <!--  ----------------------CONTENEUR-FOOTER----------------------  -->
+  <div fxLayoutAlign="center center" class="footer-top">
+
+    <div fxHide.lt-md fxFlex="25" fxFlex.md="18"></div>
+
+    <div fxLayout="row" fxLayout.lt-md="column" fxFlex>
+      <!--  ----------------------LOGO-APE+PRESENTATION----------------------  -->
+      <div fxFlex="30%" fxLayout="column" fxLayoutAlign="space-around center" class="container-logo-pres">
+        <!--  ----------------------LOGO-APE----------------------  -->
+        <div fxLayoutAlign="center center" class="logo-ape">
+
+          <img src="{{logoImgPath}}">
+
+        </div>
+        <!--  ----------------------PRESENTATION----------------------  -->
+        <div class="presentation footer-info">
+
+          <p>{{presentation}}</p>
+
+        </div>
+
+      </div>
+      <!--  ----------------------LIENS+CONTACTS+CREDITS----------------------  -->
+      <div fxLayout="column" fxLayoutAlign="space-around center" fxFlex="70%" class="container-liens-contact-credit">
+        <!--  ----------------------LIENS+CONTACTS----------------------  -->
+        <div fxLayout.gt-md="row" fxLayout.lt-md="column" fxLayoutAlign="space-around">
+          <!--  ----------------------LIENS----------------------  -->
+          <div class="liens">
+
+            <h4>Liens utiles</h4>
+
+            <li *ngFor="let link of links">
+              <a class="link" href="{{link.path}}">{{link.title}}</a>
+            </li>
+          </div>
+          <!--  ----------------------CONTACTS----------------------  -->
+          <div class="contact">
+
+            <h4>Contact</h4>
+
+            <p class="email">
+
+              <strong>Email : </strong>
+              <a class="link" href="mailto:ape.magnascole@gmail.com">ape.magnascole@gmail.com</a>
+
+            </p>
+
+            <div class="social-link">
+              <a href="https://www.facebook.com/ape.magnascole" class="link"><i class="fa fa-facebook-square" style="font-size:30px"></i></a>
+            </div>
+
+          </div>
+        </div>
+        <!--  ----------------------CREDITS----------------------  -->
+        <div  fxLayout="column" fxLayoutAlign="end center " class="credits">
+
+          <p><a class="link" href="#"><strong>Banane Design</strong></a> 2021</p>
+          <p> Designé par la banane</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div fxHide.lt-md fxFlex="25" fxFlex.md="18"></div>
+  </div>
+
+</footer>
+
+
+
