@@ -35,17 +35,17 @@ export class NewsFormStep2Component implements OnInit {
 
   ngOnInit(): void {
 
-    // const draft = localStorage.getItem('STEP_2');
-    //
-    // if (draft) {
-    //   this.form.setValue(JSON.parse(draft));
-    // }
-    //
-    // // this.form.valueChanges
-    // //   .pipe(
-    // //     filter(() => this.form.valid)
-    // //   )
-    // //   .subscribe( val => localStorage.setItem("STEP_2", JSON.stringify(val)));
+    const draft = localStorage.getItem('STEP_2');
+
+    if (draft) {
+      this.form.setValue(JSON.parse(draft));
+    }
+
+    // this.form.valueChanges
+    //   .pipe(
+    //     filter(() => this.form.valid)
+    //   )
+    //   .subscribe( val => localStorage.setItem("STEP_2", JSON.stringify(val)));
 
     this.form.valueChanges
       .pipe(first())

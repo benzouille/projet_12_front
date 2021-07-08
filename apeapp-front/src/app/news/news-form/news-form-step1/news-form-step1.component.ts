@@ -60,34 +60,6 @@ export class NewsFormStep1Component implements OnInit {
       })
   }
 
-  // createMedium(hobbiesInputs) {
-  //   const arr = hobbiesInputs.map(hobby => {
-  //     return new FormControl(hobby.selected || false);
-  //   });
-  //   return new FormArray(arr);
-  // }
-  //
-  // getSelectedHobbies() {
-  //   this.selectedHobbiesNames = _.map(
-  //     this.personForm.controls.hobbies["controls"],
-  //     (hobby, i) => {
-  //       return hobby.value && this.myhobbies[i].value;
-  //     }
-  //   );
-  //   this.getSelectedHobbiesName();
-  // }
-  //
-  // getSelectedHobbiesName() {
-  //   this.selectedMediumNames = _.filter(
-  //     this.selectedMediumNames,
-  //     function(hobby) {
-  //       if (hobby !== false) {
-  //         return hobby;
-  //       }
-  //     }
-  //   );
-  // }
-
   get category(){
     return this.form.controls['category'];
   }
