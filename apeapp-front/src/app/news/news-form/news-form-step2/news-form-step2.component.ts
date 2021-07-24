@@ -41,12 +41,6 @@ export class NewsFormStep2Component implements OnInit {
       this.form.setValue(JSON.parse(draft));
     }
 
-    // this.form.valueChanges
-    //   .pipe(
-    //     filter(() => this.form.valid)
-    //   )
-    //   .subscribe( val => localStorage.setItem("STEP_2", JSON.stringify(val)));
-
     this.form.valueChanges
       .pipe(first())
       // .filter(() => this.form.valid)

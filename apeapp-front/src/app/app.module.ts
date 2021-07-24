@@ -34,6 +34,10 @@ import { ComiteComponent } from './asso/comite/comite.component';
 import { PresentationComponent } from './asso/presentation/presentation.component';
 import { AdhererComponent } from './asso/adherer/adherer.component';
 import {NewsModule} from './news/news.module';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { UnsubscribeComponent } from './navigation/unsubscribe/unsubscribe.component';
 
 
 
@@ -49,7 +53,8 @@ import {NewsModule} from './news/news.module';
     HelpUsComponent,
     ComiteComponent,
     PresentationComponent,
-    AdhererComponent
+    AdhererComponent,
+    UnsubscribeComponent
   ],
     imports: [
         CommonModule,
@@ -76,6 +81,8 @@ import {NewsModule} from './news/news.module';
         MatRadioModule,
         KeycloakAngularModule,
         NewsModule,
+        StoreModule.forRoot({}, {}),
+        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     ],
   providers: [
     {

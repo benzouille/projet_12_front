@@ -8,6 +8,7 @@ import {HelpUsComponent} from './asso/help-us/help-us.component';
 import {ComiteComponent} from './asso/comite/comite.component';
 import {PresentationComponent} from './asso/presentation/presentation.component';
 import {AdhererComponent} from './asso/adherer/adherer.component';
+import {UnsubscribeComponent} from './navigation/unsubscribe/unsubscribe.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'accueil', pathMatch: 'full' },
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'asso/bureau', component: BureauComponent},
   { path: 'asso/help-us', component: HelpUsComponent},
   { path: 'asso/adherer', component: AdhererComponent},
+  { path: 'unsubscribe/:encodedId', component: UnsubscribeComponent},
 
   {
     path: 'news',
