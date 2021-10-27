@@ -1,8 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
-import {first} from 'rxjs/operators';
+import {Component, OnInit} from '@angular/core';
+import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
 import {NewFormService} from '../new-form.service';
+import {NewsData} from '../../model/NewsData';
 
+/**
+ * Form with stepper : stepper2 title, body and image of the new actuality.
+ */
 @Component({
   selector: 'app-news-form-step2',
   templateUrl: './news-form-step2.component.html',
@@ -22,39 +25,28 @@ export class NewsFormStep2Component implements OnInit {
       validators: [
         Validators.required,
         Validators.minLength(3),
-        Validators.maxLength(1000),
+        Validators.maxLength(3000),
       ],
     }],
-    thumbnail: [''],
   });
 
-  constructor(private fb: FormBuilder, private newFormService: NewFormService) {
+  newsData: NewsData;
+
+  constructor(private fb: FormBuilder, private newFormService: NewFormService) {}
+
+  ngOnInit(): void {}
+
+  saveDataNewsForm(): void {
+    this.newsData = {title: this.form.value.title, longDescription: this.form.value.longDescription};
+    this.newFormService.setSubjectDataNewsForm(this.newsData);
   }
 
-  secondes: number;
-
-  ngOnInit(): void {
-
-    const draft = localStorage.getItem('STEP_2');
-
-    if (draft) {
-      this.form.setValue(JSON.parse(draft));
-    }
-
-    this.form.valueChanges
-      .pipe(first())
-      // .filter(() => this.form.valid)
-      .subscribe( val => localStorage.setItem('STEP_2', JSON.stringify(val)));
+  get title(): AbstractControl {
+    return this.form.controls.title;
   }
 
-  // TODO take until destroy
-
-  get title(){
-    return this.form.controls['title'];
-  }
-
-  get description(){
-    return this.form.controls['longDescription'];
+  get description(): AbstractControl {
+    return this.form.controls.longDescription;
   }
 
 }

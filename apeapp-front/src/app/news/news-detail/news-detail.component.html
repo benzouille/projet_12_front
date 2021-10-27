@@ -1,33 +1,20 @@
-<div class="container-fluid">
-  <div class="mx-auto col-12"
-       style="background-image: url(../assets/img/background_actu_top_v3.png);
-       margin-bottom: 0px;
-    max-width: 800px;
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-position: initial;
-    font-family: 'Ink Free',serif;">
-    <div class="h2 text-center" style="margin-bottom: 0px; padding-top: 74px">
+<div class="container-fluid new-detail">
+  <div class="mx-auto col-12 background-sheet"
+       style="background-image: url(../assets/img/background_actu_top_v3.png);">
+    <div class="h2 text-center title">
       <ins>{{communication.title}}</ins>
     </div>
   </div>
-  <div class="mx-auto col-12"
-       style="background-image: url(../assets/img/background_actu_mid_v3.png);
-    margin-top: 0px;
-    margin-bottom: 0px;
-    max-width: 800px;
-    background-repeat: repeat-y;
-    background-size: auto;
-    background-position: initial;
-    font-family: 'Ink Free',serif;">
+  <div class="mx-auto col-12 background-sheet"
+       style="background-image: url(../assets/img/background_actu_mid_v3.png); background-repeat: repeat-y;">
 
-    <div class="row" style="padding-top: 50px; padding-left: 40px">
+    <div class="row body-bloc">
 
-      <div class="col-2" style="padding-left: 30px; margin-top: -70px">{{communication.date}}</div>
+      <div class="col-2 creation-date">{{communication.date}}</div>
       <div class="col-9">
 
         <div class="col-6">
-          <figure class="figure image-wrapper float-left pr-2">
+          <figure class="figure image-wrapper float-left pr-2 image">
             <img class="figure-img img-fluid rounded" src="http://localhost:9101/image/{{communication.imagePath}}" alt="...">
           </figure>
         </div>
@@ -42,7 +29,7 @@
   <div class="mx-auto col-12"
        style="
        background-image: url(../assets/img/background_actu_bot_v3.png);
-       margin-top: 0px;
+       margin-top: 0;
     max-width: 800px;
     background-repeat: no-repeat;
     background-position: initial;">

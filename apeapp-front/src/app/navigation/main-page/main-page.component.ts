@@ -1,12 +1,12 @@
-// @ts-ignore
-// @ts-ignore
-
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
 import {catchError, finalize} from 'rxjs/operators';
 import {of, pipe} from 'rxjs';
 import {HttpClient, HttpEventType} from '@angular/common/http';
 
+/**
+ * Welcome page of the app, contain small presentation, lastest news, mailling inscription.
+ */
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',

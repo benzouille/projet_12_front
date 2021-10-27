@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {CommunicationModel} from '../model/CommunicationModel';
 import {ActivatedRoute} from '@angular/router';
 
+/**
+ * page of news in detail
+ */
 @Component({
   selector: 'app-news-detail',
   templateUrl: './news-detail.component.html',
@@ -17,7 +20,7 @@ export class NewsDetailComponent implements OnInit {
 
     this.communication = this.route.snapshot.data["communication"];
 
-    console.log("communication : " + this.communication.title);
+    console.log('communication : ' + this.communication.title);
 
   }
 

@@ -2,7 +2,11 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {KeycloakProfile} from 'keycloak-js';
 import {KeycloakService} from 'keycloak-angular';
 import {LinkName} from '../data/LinkName';
+import {Router} from '@angular/router';
 
+/**
+ * Navbar contain links to navigate in the app, appear only on large screen
+ */
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -17,7 +21,7 @@ export class NavbarComponent implements OnInit {
   public userProfile: KeycloakProfile | null = null;
   public linkName = LinkName;
 
-  constructor(public keycloak: KeycloakService) { }
+  constructor(public keycloak: KeycloakService, public router: Router) { }
 
   public async ngOnInit() {
     this.isLoggedIn = await this.keycloak.isLoggedIn();
@@ -33,6 +37,7 @@ export class NavbarComponent implements OnInit {
 
   onLogout = () => {
     this.keycloak.logout();
+    this.router.navigateByUrl('');
   }
 
   onProfile = () => {

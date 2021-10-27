@@ -38,6 +38,8 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { UnsubscribeComponent } from './navigation/unsubscribe/unsubscribe.component';
+import { BackOfficeComponent } from './navigation/back-office/back-office.component';
+import {MailService} from './services/mail.service';
 
 
 
@@ -54,7 +56,8 @@ import { UnsubscribeComponent } from './navigation/unsubscribe/unsubscribe.compo
     ComiteComponent,
     PresentationComponent,
     AdhererComponent,
-    UnsubscribeComponent
+    UnsubscribeComponent,
+    BackOfficeComponent,
   ],
     imports: [
         CommonModule,
@@ -85,6 +88,7 @@ import { UnsubscribeComponent } from './navigation/unsubscribe/unsubscribe.compo
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     ],
   providers: [
+    MailService,
     {
       provide: APP_INITIALIZER,
       useFactory: initializeKeycloak,

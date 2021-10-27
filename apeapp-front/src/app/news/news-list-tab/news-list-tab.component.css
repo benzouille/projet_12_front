@@ -18,24 +18,38 @@ h1{
   margin: 0 auto;
 }
 .new-card {
-  margin: 20px 10px;
-  background-size: auto;
-  background: url("src/assets/img/background_card_v3.png");
-  background-origin: border-box;
+  margin: 20px;
+  /*margin: 20px 10px;*/
+  /*background-size: auto;*/
+  /*background: url("src/assets/img/background_card_v3.png");*/
+  /*background-origin: border-box;*/
+}
+
+.new-card-div-img {
+  max-height: 300px;
+  min-height: 300px;
+  overflow: hidden;
 }
 
 .new-card-img{
-  max-width: 250px;
-  height: auto;
+  /*max-width: 250px;*/
+  /*height: auto;*/
+}
+
+.new-card-content {
+  min-height: 50px;
+  max-height: 50px;
 }
 
 .new-card-title{
-  text-align: center;
-  height: 50px
+  min-height: 50px;
+  max-height: 50px;
+  /*text-align: center;*/
+  /*height: 50px*/
 }
 
 .new-actions {
-  text-align: center;
+  /*text-align: center;*/
 }
 
 .full-width{

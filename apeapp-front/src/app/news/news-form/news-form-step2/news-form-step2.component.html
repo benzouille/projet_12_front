@@ -10,7 +10,7 @@
 
       <mat-form-field>
 
-        <input matInput placeholder="Titre" formControlName="title" #titl>
+        <input (change)="saveDataNewsForm()" matInput placeholder="Titre" formControlName="title" #titl>
 
         <mat-hint align="end">
           {{titl.value.length}} / 60
@@ -24,7 +24,7 @@
 
     <div class="div-padding" fxLayout="column">
 
-      <app-upload-file formControlName="thumbnail"></app-upload-file>
+      <app-upload-file (change)="saveDataNewsForm()"></app-upload-file>
 
     </div>
   </div>
@@ -33,26 +33,24 @@
 
     <mat-form-field appearance="outline">
 
-    <textarea matInput placeholder="description" formControlName="longDescription" #descr>
+    <textarea (change)="saveDataNewsForm()" matInput placeholder="description" formControlName="longDescription" #descr>
 
     </textarea>
 
       <mat-hint align="end">
-        {{descr.value.length}} / 1000
+        {{descr.value.length}} / 3000
       </mat-hint>
 
       <mat-error *ngIf="description.errors?.required">La description est obligatoire</mat-error>
 
     </mat-form-field>
+  </div>
+</div>
 
-  </div>
-</div>
-<div fxFlex fxLayout="column">
-  <div class="form-val">
-    Form validity state: {{form.valid }}
-  </div>
-  <div class="form-val">
-    {{form.value | json}}
-  </div>
-</div>
+
+<!--    <div>Data change input:-->
+<!--      <input #dataInput type="text" class="form-control" (change)="saveData(dataInput.value)"/>-->
+<!--    </div>-->
+
+
 

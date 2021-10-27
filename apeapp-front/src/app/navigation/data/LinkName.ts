@@ -1,3 +1,6 @@
+/**
+ * url link list
+ */
 export class LinkName {
 
   public accueil = '';

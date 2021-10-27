@@ -4,6 +4,7 @@ import {NewsService} from '../services/news.service';
 import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
 import {catchError, finalize} from 'rxjs/operators';
 import {of} from 'rxjs';
+import {NewFormService} from '../news-form/new-form.service';
 
 @Component({
   selector: 'app-upload-file',
@@ -33,7 +34,7 @@ export class UploadFileComponent implements OnInit, ControlValueAccessor {
 
   onTouched = () => {};
 
-  constructor(private http: HttpClient, private newsService: NewsService) { }
+  constructor(private http: HttpClient, private newsService: NewsService, private newFormService: NewFormService) { }
 
   ngOnInit(): void {
   }
@@ -85,6 +86,7 @@ export class UploadFileComponent implements OnInit, ControlValueAccessor {
     }
 
     this.newsService.uploadFile(file);
+    this.newFormService.setSubjectThumbnail(this.fileName);
 
   }
 
@@ -100,7 +102,7 @@ export class UploadFileComponent implements OnInit, ControlValueAccessor {
     this.fileName = value;
   }
 
-  setDisabledState(disabled: boolean) {
+  setDisabledState(disabled: boolean): void {
     this.disabled = disabled;
   }
 

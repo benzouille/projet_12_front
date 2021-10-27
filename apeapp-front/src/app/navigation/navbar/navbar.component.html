@@ -5,24 +5,17 @@
       <mat-icon [ngStyle]="{'color':'white'}">menu</mat-icon>
     </button>
   </div>
-  <!--  <div>-->
-  <!--    <a routerLink="" style="margin-left: 10px"> Accueil</a>-->
-  <!--  </div>-->
   <div fxFlex fxLayout fxLayoutAlign="start" fxHide.xs fxHide.sm>
     <a mat-list-item routerLink="/news">
       <mat-icon class="clickable">article</mat-icon><span class="nav-caption">Actualité</span>
     </a>
-    <a mat-list-item routerLink="/news/create" style="color: red">
-      <mat-icon>add</mat-icon><span class="nav-caption">Nouvelle actualité</span>
-    </a>
-
     <a mat-list-item [matMenuTriggerFor]="asso">
       <mat-icon class="clickable">keyboard_arrow_down</mat-icon>
       <span class="nav-caption clickable">L'association</span>
     </a>
     <mat-menu #asso="matMenu">
       <button mat-menu-item routerLink="/asso/presentation"><mat-icon>perm_identity</mat-icon>Presentation</button>
-      <button mat-menu-item routerLink="/asso/comite"><mat-icon>supervisor_account</mat-icon>Le comité</button>
+<!--      <button mat-menu-item routerLink="/asso/comite"><mat-icon>supervisor_account</mat-icon>Le comité</button>-->
       <button mat-menu-item routerLink="/asso/bureau"><mat-icon>supervised_user_circle</mat-icon>Le bureau</button>
     </mat-menu>
 
@@ -30,31 +23,27 @@
       <mat-icon class="clickable">hail</mat-icon><span class="nav-caption">Nous aider</span>
     </a>
 
-    <a mat-list-item routerLink="/asso/adherer">
-      <mat-icon class="clickable">card_membership</mat-icon><span class="nav-caption">Adhérer</span>
-    </a>
+<!--    <a mat-list-item routerLink="/asso/adherer">-->
+<!--      <mat-icon class="clickable">card_membership</mat-icon><span class="nav-caption">Adhérer</span>-->
+<!--    </a>-->
   </div>
   <div fxFlex fxLayout fxLayoutAlign="end" fxHide.xs fxHide.sm>
     <ul fxLayout fxLayoutGap="15px" class="navigation-items">
       <mat-divider></mat-divider>
-
+      <a href="https://www.facebook.com/ape.magnascole" class="link">
+        <i class="fa fa-facebook-square" style="font-size:30px"></i>
+      </a>
+      <a *ngIf="isLoggedIn" mat-list-item routerLink="/news/create" style="color: beige">
+        <mat-icon>add</mat-icon><span class="nav-caption">Nouvelle actualité</span>
+      </a>
       <a *ngIf="isLoggedIn" mat-list-item [matMenuTriggerFor]="user">
         <mat-icon class="clickable">keyboard_arrow_down</mat-icon>
-        <span class="nav-caption clickable">{{ userProfile.username }}</span>
+        <span class="nav-caption clickable">{{ userProfile?.username }}</span>
       </a>
       <mat-menu #user="matMenu">
-        <button mat-menu-item (click)="onProfile()"><mat-icon>manage_accounts</mat-icon>Profil</button>
+        <button mat-menu-item routerLink="/back-office"><mat-icon>manage_accounts</mat-icon>Gestion</button>
         <button mat-menu-item (click)="onLogout()"><mat-icon>logout</mat-icon>Deconnexion</button>
       </mat-menu>
-
-      <a *ngIf="!isLoggedIn" mat-list-item (click)="onLogin()">
-        <mat-icon class="clickable">account_circle</mat-icon>
-        <span class="nav-caption clickable">Connexion</span>
-      </a>
-      <a *ngIf="!isLoggedIn" mat-list-item (click)="onRegister()">
-        <mat-icon class="clickable">person_add</mat-icon>
-        <span class="nav-caption clickable">S'enregistrer</span>
-      </a>
     </ul>
   </div>
 </mat-toolbar>

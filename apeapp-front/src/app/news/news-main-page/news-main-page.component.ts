@@ -4,6 +4,9 @@ import {CommunicationModel} from '../model/CommunicationModel';
 import {NewsService} from '../services/news.service';
 import {map, shareReplay, tap} from 'rxjs/operators';
 
+/**
+ * Component used to show the 3 latest actuality. integrated on main page.
+ */
 @Component({
   selector: 'app-news-main-page',
   templateUrl: './news-main-page.component.html',

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+/**
+ * Page presentation of parents association
+ */
 @Component({
   selector: 'app-presentation',
   templateUrl: './presentation.component.html',

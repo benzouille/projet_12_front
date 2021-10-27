@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {NewsService} from '../services/news.service';
 
+/**
+ * Page of the overall seen news
+ */
 @Component({
   selector: 'app-news-card',
   templateUrl: './news-card.component.html',

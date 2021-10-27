@@ -2,6 +2,9 @@ import {Component, OnInit, Output, EventEmitter} from '@angular/core';
 import {KeycloakProfile} from 'keycloak-js';
 import {KeycloakService} from 'keycloak-angular';
 
+/**
+ * The sidebar appair only on smaller screen, it remplace the navbar on those.
+ */
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',

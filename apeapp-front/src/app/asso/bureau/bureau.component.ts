@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {Office} from './Office';
 
+/**
+ * page for explanation of the office members and what they do.
+ */
 @Component({
   selector: 'app-bureau',
   templateUrl: './bureau.component.html',

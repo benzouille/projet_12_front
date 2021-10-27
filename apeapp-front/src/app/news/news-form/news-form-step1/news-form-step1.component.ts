@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
+import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import {NewFormService} from '../new-form.service';
+import {NewsParam} from '../../model/NewsParam';
 
+/**
+ * Form with stepper : stepper1 configuration of the new actuality.
+ */
 @Component({
   selector: 'app-news-form-step1',
   templateUrl: './news-form-step1.component.html',
@@ -9,10 +14,10 @@ import {FormBuilder, Validators} from '@angular/forms';
 export class NewsFormStep1Component implements OnInit {
 
   form = this.fb.group({
-      category: ['Manifestation', Validators.required],
+      category: ['', Validators.required],
       onDateEvent: [false],
       eventAt: [new Date(), Validators.required],
-      onSite: [false],
+      onSite: [true],
       onMail: [false],
       onFacebook: [false],
     }
@@ -20,34 +25,30 @@ export class NewsFormStep1Component implements OnInit {
 
   newsCategories;
   mediumTypes;
-  mediumTypesCount;
   selectedMediumNames: [string];
-
   onDateEvent;
 
-  constructor(private fb: FormBuilder) { }
+  newsParam: NewsParam;
+
+  constructor(private fb: FormBuilder, private newFormService: NewFormService) { }
 
   ngOnInit(): void {
 
-    // TODO a remplacer par appel micro service
     this.newsCategories = [
-      {code: '1', description: 'Actualité'},
-      {code: '2', description: 'Information'},
-      {code: '3', description: 'Manifestation'}
+      {code: 'ACTUALITE', description: 'Actualité'},
+      {code: 'INFORMATION', description: 'Information'},
+      {code: 'MANIFESTATION', description: 'Manifestation'}
     ];
 
     this.mediumTypes = [
-      {name: 'Site', value: 'site'},
-      {name: 'E-mail', value: 'email'},
-      {name: 'Facebook', value: 'facebook'},
+      {name: 'Site', value: 'SITE'},
+      {name: 'E-mail', value: 'MAIL'},
+      {name: 'Facebook', value: 'FACEBOOK'},
     ];
-
-    this.mediumTypesCount = 0;
-
 
     this.form.valueChanges
       .subscribe(val => {
-        const dateEventControl = this.form.controls["eventAt"];
+        const dateEventControl = this.form.controls.eventAt;
 
         if (val.onDateEvent === false && dateEventControl.enabled){
           dateEventControl.disabled;
@@ -57,11 +58,24 @@ export class NewsFormStep1Component implements OnInit {
           dateEventControl.enabled;
           this.onDateEvent === true;
         }
-      })
+      });
   }
 
-  get category(){
-    return this.form.controls['category'];
+  saveNewsParam(): void {
+    this.newsParam = {
+      category: this.form.value.category,
+      eventAt: this.form.value.eventAt,
+      mediumTypes: [''],
+      onDateEvent: this.form.value.onDateEvent,
+      onFacebook: this.form.value.onFacebook,
+      onMail: this.form.value.onMail,
+      onSite: this.form.value.onSite
+    };
+    this.newFormService.setSubjectNewsParam(this.newsParam);
+  }
+
+  get category(): AbstractControl {
+    return this.form.controls.category;
   }
 
 }

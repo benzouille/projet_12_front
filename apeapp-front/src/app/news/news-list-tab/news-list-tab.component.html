@@ -26,18 +26,18 @@
 
               </mat-card-header>
 
+              <div class="new-card-div-img">
               <img class="new-card-img" mat-card-image src="http://localhost:9101/image/{{comm.imagePath}}">
+              </div>
 
               <mat-card-content>
                 <p>{{comm.body | slice : 0 : 60 }}...</p>
               </mat-card-content>
 
               <mat-card-actions class="new-actions">
-                <!--TODO tester fxFlexsur button-->
                 <button  mat-button class="mat-raised-button" color="primary" routerLink="communication/{{comm.id}}">
                   Lire
                 </button>
-
               </mat-card-actions>
 
             </mat-card>
@@ -138,7 +138,7 @@
         <div fxLayout="row wrap">
           <!--List of card-->
           <div class="min-padding"
-               *ngFor="let comm of actuComs$ | async"
+               *ngFor="let comm of infoComs$ | async"
                fxFlex="25"
                fxFlex.md="33"
                fxFlex.sm="50"

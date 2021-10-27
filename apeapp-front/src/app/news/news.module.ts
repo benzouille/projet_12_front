@@ -27,6 +27,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatInputModule} from '@angular/material/input';
 import { NewsMainPageComponent } from './news-main-page/news-main-page.component';
+import {MailService} from '../services/mail.service';
+
 
 @NgModule({
     declarations: [
@@ -58,7 +60,8 @@ import { NewsMainPageComponent } from './news-main-page/news-main-page.component
         MatDatepickerModule,
         MatNativeDateModule,
         MatCheckboxModule,
-        MatProgressBarModule
+        MatProgressBarModule,
+        // StoreModule.forFeature('news', newsReducer)
     ],
     providers: [
         MatDatepickerModule,
@@ -75,7 +78,7 @@ export class NewsModule {
     return {
       ngModule: NewsModule,
       providers: [
-        NewsService
+        NewsService,
       ],
     };
   }

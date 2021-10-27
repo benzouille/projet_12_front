@@ -1,0 +1,25 @@
+<div>
+  <div class="spaceLnR" fxLayout="column" fxLayoutAlign="space-around center">
+    <div>
+      <h2><strong>{{subtitle1}}</strong></h2>
+      <p>{{paraph1}}</p>
+    </div>
+  </div>
+  <div class="spaceLnR" fxLayout="column" fxLayoutAlign="space-around center">
+    <button mat-raised-button *ngIf="!isLoggedIn" (click)="onLogin()">
+      <mat-icon class="clickable">account_circle</mat-icon>
+      <span class="nav-caption clickable">Connexion</span>
+    </button>
+
+    <button class="spaceAround" mat-raised-button *ngIf="isLoggedIn" routerLink="/news/create">
+      <mat-icon>add</mat-icon><span class="nav-caption">Nouvelle actualité</span>
+    </button>
+
+    <button class="spaceAround" mat-raised-button *ngIf="isLoggedIn" (click)="onLogout()">
+      <mat-icon class="clickable">logout</mat-icon>
+      <span class="nav-caption clickable">Deconnexion</span>
+    </button>
+  </div>
+</div>
+
+

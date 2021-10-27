@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+/**
+ * Empty actually add in a further version
+ */
 @Component({
   selector: 'app-comite',
   templateUrl: './comite.component.html',

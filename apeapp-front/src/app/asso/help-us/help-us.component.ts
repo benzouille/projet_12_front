@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+/**
+ * Page help us with their data
+ */
 @Component({
   selector: 'app-help-us',
   templateUrl: './help-us.component.html',

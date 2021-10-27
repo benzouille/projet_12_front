@@ -1,10 +1,11 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder} from '@angular/forms';
 import {NewFormService} from '../new-form.service';
-import {NewsService} from '../../services/news.service';
-import {DomSanitizer} from '@angular/platform-browser';
-import {Subscription} from 'rxjs';
+import {Observable} from 'rxjs';
 
+/**
+ * Form with stepper : stepper3 wyswyg of the new actuality and validate it.
+ */
 @Component({
   selector: 'app-news-form-step3',
   templateUrl: './news-form-step3.component.html',
@@ -12,47 +13,48 @@ import {Subscription} from 'rxjs';
 })
 export class NewsFormStep3Component implements OnInit, OnDestroy {
 
-  subscription: Subscription;
+  title: string;
+  longDescription: string;
+  thumbnail: string;
 
-  subscriptionForTitre: Subscription;
+  category: string;
+  onDateEvent: boolean;
+  eventAt?: Date;
+  onSite: boolean;
+  onMail: boolean;
+  onFacebook: boolean;
+  mediumTypes: [string];
 
-  form = this.fb.group({
-
-
-  });
-
-  titre: string;
-
-  form1;
-
-  form2;
-
-  constructor(private fb: FormBuilder,
-              private newFormService: NewFormService,
-              private newsService: NewsService,
-              private sanitizer: DomSanitizer) {
-
-    this.subscriptionForTitre = this.newFormService.getTitre().subscribe(val => {
-      this.titre = val;
-      console.log('le titre : ' + this.titre);
-    });
+  constructor(private fb: FormBuilder, private newFormService: NewFormService) {
   }
 
   ngOnInit(): void {
 
-    const draft = localStorage.getItem('STEP_2');
+    this.newFormService.getSubjectDataNewsForm()
+      .subscribe(newsData => {
+          this.title = newsData?.title;
+          this.longDescription = newsData?.longDescription;
+        }
+      );
 
-    if (draft) {
-      console.log(JSON.parse(draft));
-    }
+    this.newFormService.getSubjectNewsParam()
+      .subscribe(newsParam => {
+          this.category = newsParam.category;
+          this.onDateEvent = newsParam.onDateEvent;
+          this.eventAt = newsParam.eventAt;
+          this.onSite = newsParam.onSite;
+          this.onMail = newsParam.onMail;
+          this.onFacebook = newsParam.onFacebook;
+          this.mediumTypes = newsParam.mediumTypes;
+        }
+      );
 
-    this.subscriptionForTitre = this.newFormService.getTitre().subscribe(val => {
-      this.titre = val;
-      console.log('le titre : ' + val.value);
-    });
+    this.newFormService.getSubjectThumbnail()
+      .subscribe(thumbnail =>
+        this.thumbnail = thumbnail
+      );
   }
 
   ngOnDestroy(): void {
   }
-
 }

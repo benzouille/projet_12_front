@@ -4,6 +4,9 @@ import {CommunicationModel} from '../model/CommunicationModel';
 import {Observable} from 'rxjs';
 import {map, shareReplay, tap} from 'rxjs/operators';
 
+/**
+ * This componant get select and display actuality by type
+ */
 @Component({
   selector: 'app-news-list-tab',
   templateUrl: './news-list-tab.component.html',
@@ -46,27 +49,42 @@ export class NewsListTabComponent implements OnInit {
       shareReplay()
     );
 
+    /**
+     * Provide all Communications
+     */
     this.allComs$ = allCommunications$
       .pipe(
         map(comms => comms)
       );
 
+    /**
+     * Provide list of manif Communications
+     */
     this.manifComs$ = allCommunications$
       .pipe(
         map(comms => comms.filter(comm => comm.typeCom === 'MANIFESTATION'))
       );
 
+    /**
+     * Provide list of actu Communications
+     */
     this.actuComs$ = allCommunications$
       .pipe(
         map(comms => comms.filter(comm => comm.typeCom === 'ACTUALITE'))
       );
 
+    /**
+     * Provide list of info Communications
+     */
     this.infoComs$ = allCommunications$
       .pipe(
         map(comms => comms.filter(comm => comm.typeCom === 'INFORMATION'))
       );
   }
 
+  /*
+  TODO maye unusable
+   */
   private createImageFromBlob(image: Blob) {
     const reader = new FileReader();
     reader.addEventListener('load', () => {
@@ -78,6 +96,9 @@ export class NewsListTabComponent implements OnInit {
     }
   }
 
+  /*
+  TODO maye unusable
+ */
   public getImageFromService(titleImage: string) {
     // this.isImageLoading = true;
     this.newsService.getImageFile(titleImage).subscribe(data => {

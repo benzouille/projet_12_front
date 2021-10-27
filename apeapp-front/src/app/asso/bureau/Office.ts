@@ -1,5 +1,6 @@
-
-
+/**
+ * Office detail
+ */
 export const Office: any = [
   {title: 'Président(e)',
     name: 'Kévin HUTHER',

@@ -1,3 +1,4 @@
+
 <div>
   <div class="div-background-logo" fxLayoutAlign="center center">
     <img fxHide.xs class="img-background-logo" src="{{imgpathBackgroundLogo}}">
@@ -5,9 +6,6 @@
   <div class="div-logo" fxLayoutAlign="center center">
     <img class="img-logo" src="{{imgpathLogo}}">
   </div>
-  <!--  <div class="div-slog" fxLayoutAlign="center center">-->
-  <!--    <img class="img-slog" src="{{imgpathSlog}}">-->
-  <!--  </div>-->
   <div class="spaceLnR" fxLayout="column" fxLayoutAlign="space-around center">
     <div>
       <h2><strong>{{h1}}</strong></h2>
@@ -25,8 +23,11 @@
       </button>
     </div>
 
-    <div [formGroup]="form" fxFlex fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap="10px">
-      <span class="nav-caption">S'inscrire à la newsletter</span>
+    <div [formGroup]="form" fxFlex fxLayout="column" fxLayoutGap="10px"  style="margin-top: 30px">
+      <mat-divider></mat-divider>
+      <div>
+        <h2><strong>S'inscrire à la newsletter</strong></h2>
+      </div>
       <div>
         <div>
           <mat-form-field>
@@ -37,33 +38,15 @@
 
           </mat-form-field>
 
+            <button mat-raised-button color="primary"
+                    style="margin-left: 10px"
+                    [disabled]="!form.valid"
+                    (click)="submit(form)">S'inscrire</button>
         </div>
-      </div>
-
-      <div>
-        <button mat-raised-button color="primary"
-                [disabled]="!form.valid"
-                (click)="submit(form)">S'inscrire</button>
-      </div>
-    </div>
-
-    <div>
-      <div>
-        <button mat-button routerLink="/news">
-          <mat-icon class="clickable">card_membership</mat-icon>
-          <span class="nav-caption">Adhérer</span>
-        </button>
-      </div>
-
-      <div>
-        <button mat-button routerLink="/asso/help-us">
-          <mat-icon class="clickable">hail</mat-icon>
-          <span class="nav-caption">Nous aider</span>
-        </button>
       </div>
     </div>
   </div>
-</div>
+
 
 
 

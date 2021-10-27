@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
+import {MailService} from '../../services/mail.service';
 
+/**
+ * here is the linked page of unsubscribe button on newsletters
+ */
 @Component({
   selector: 'app-unsuscribe',
   templateUrl: './unsubscribe.component.html',
@@ -9,17 +13,17 @@ import {ActivatedRoute} from '@angular/router';
 export class UnsubscribeComponent implements OnInit {
 
   public encodedId: string;
+  public _mailService: MailService;
 
-  constructor(private activatedRoute: ActivatedRoute, ) {
+  constructor(private activatedRoute: ActivatedRoute, mailService: MailService) {
+    this._mailService = mailService;
 
   }
 
   ngOnInit(): void {
     this.encodedId = this.activatedRoute.snapshot.paramMap.get('encodedId');
-
-
-
-    console.log(this.encodedId);
+    this._mailService.unSubscribeNewsLetter(this.encodedId).subscribe();
+    console.log('pass here');
   }
 
 }

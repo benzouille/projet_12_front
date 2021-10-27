@@ -1,24 +1,67 @@
-import { Injectable } from '@angular/core';
-import {Observable, Subject} from 'rxjs';
-import {AbstractControl} from '@angular/forms';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {NewsData} from '../model/NewsData';
+import {NewsParam} from '../model/NewsParam';
 
 @Injectable({
   providedIn: 'root'
 })
 export class NewFormService {
 
-  private subject = new Subject<any>();
+  behaviorSubjectStep1: BehaviorSubject<NewsParam>;
+  observableStep1$: Observable<NewsParam>;
 
-  constructor() { }
+  behaviorSubjectForm: BehaviorSubject<NewsData>;
+  observableForm$: Observable<NewsData>;
 
+  behaviorSubjectThumbnail: BehaviorSubject<string>;
+  observableThumbnail$: Observable<string>;
 
-  sendTitre(titre: AbstractControl){
-    this.subject.next({val : titre.value});
+  constructor() {
+    this.behaviorSubjectStep1 = new BehaviorSubject<NewsParam>({
+      category: null,
+      onDateEvent: false,
+      eventAt: null,
+      onSite: false,
+      onMail: false,
+      onFacebook: false,
+      mediumTypes: null,
+    });
+    this.observableStep1$ = this.behaviorSubjectStep1.asObservable();
+
+    this.behaviorSubjectForm = new BehaviorSubject<NewsData>({
+      title: null,
+      longDescription: null,
+    });
+    this.observableForm$ = this.behaviorSubjectForm.asObservable();
+
+    this.behaviorSubjectThumbnail = new BehaviorSubject<string>('');
+    this.observableThumbnail$ = this.behaviorSubjectThumbnail.asObservable();
   }
 
-  getTitre(): Observable<any>{
-    console.log('le titre : ' + this.subject.next());
-    return this.subject.asObservable();
 
+  setSubjectNewsParam(newsParam: NewsParam): void {
+    console.log(newsParam);
+    this.behaviorSubjectStep1.next(newsParam);
+  }
+
+  getSubjectNewsParam(): Observable<NewsParam> {
+    return this.observableStep1$;
+  }
+
+  setSubjectDataNewsForm(newsData: NewsData): void {
+    this.behaviorSubjectForm.next(newsData);
+  }
+
+  getSubjectDataNewsForm(): Observable<NewsData> {
+    return this.observableForm$;
+  }
+
+  setSubjectThumbnail(thumbnail: string): void {
+    this.behaviorSubjectThumbnail.next(thumbnail);
+  }
+
+  getSubjectThumbnail(): Observable<string> {
+    return this.observableThumbnail$;
   }
 }
